@@ -14,7 +14,7 @@
 
 # Imports
 
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -162,6 +162,7 @@ genrule(
         timeout = "moderate",
         srcs = glob(["test/**/*.h"]) + ["test/benchmark/" + test + ".cpp"],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rcl_yaml_param_parser\\\""],
+        tags = ["manual"],
         deps = [
             ":rcutils",
             "@google_benchmark//:benchmark",
