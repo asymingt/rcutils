@@ -31,6 +31,10 @@ cc_library(
     ),
     hdrs = glob(["include/**/*.h"]),
     includes = ["include"],
+    linkopts = select({
+        "@platforms//os:linux": ["-lrt"],
+        "//conditions:default": [],
+    }),
     local_defines = [
         "RCUTILS_ENABLE_FAULT_INJECTION",
         "ROS_PACKAGE_NAME=\\\"rcutils\\\"",
